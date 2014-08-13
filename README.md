@@ -6,3 +6,6 @@ webiopi repository converted by git-svn for study
 
 refer to the [original website](https://code.google.com/p/webiopi/).
 
+# Difference from the original webiopi
+
+* Support MPL115A2
