@@ -1,6 +1,6 @@
-# webiopi-git
+# What's this?
 
-webiopi repository converted by git-svn for study
+Webiopi repository at release 0.7.0 converted by git-svn for study.
 
 # How to use
 
