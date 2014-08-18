@@ -2,6 +2,7 @@
 
 import unittest
 from mpl115a2 import *
+from htu21d import *
 
 class MP1115A2_test(unittest.TestCase):
     @classmethod
@@ -66,6 +67,24 @@ class MP1115A2_test(unittest.TestCase):
         self.obj._coef_c12 = 0.000790
         result = self.obj._Adc2Pcomp((410, 507))
         self.assertEqual(result, 733.1905100000001)
+
+class HTU21D_test(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def setUp(self):
+        self.obj = HTU21D()
+
+    def test_getCrc(self):
+        # These values are written on datasheet as CRC examples.
+        self.assertEqual(self.obj._getCrc(0xdc, 8), 0x79)
+        self.assertEqual(self.obj._getCrc(0x683a, 16), 0x7c)
+        self.assertEqual(self.obj._getCrc(0x4e85, 16), 0x6b)
 
 if __name__ == '__main__':
     unittest.main()
