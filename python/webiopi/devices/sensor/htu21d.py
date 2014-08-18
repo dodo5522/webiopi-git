@@ -62,6 +62,23 @@ class HTU21D(I2C, Temperature, Humidity):
         print("lsb : 0x%02x" % regs[1])
         print("sum : 0x%02x" % regs[2])
 
+    def _getCrc(self, value, bitlen):
+        '''
+        Calculate and return CRC-8 correspoinding to the specified value with bit length.
+        '''
+        # x^8 + x^5 + x^4 + 1
+        polynomial = 0b100110001
+
+        # This is first padded with zeroes correspoinding to the bit length of the CRC.
+        polynomial <<= bitlen + 8 - 9
+        value <<= 8
+
+        for i in range(0, bitlen):
+            if value & (1 << (bitlen + 8 - 1 - i)):
+                value ^= (polynomial >> i)
+
+        return value
+
 if __name__ == '__main__':
     obj = HTU21D()
     obj.getHumidity()

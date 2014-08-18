@@ -80,8 +80,11 @@ class HTU21D_test(unittest.TestCase):
     def setUp(self):
         self.obj = HTU21D()
 
-    def test_dummy(self):
-        pass
+    def test_getCrc(self):
+        # These values are written on datasheet as CRC examples.
+        self.assertEqual(self.obj._getCrc(0xdc, 8), 0x79)
+        self.assertEqual(self.obj._getCrc(0x683a, 16), 0x7c)
+        self.assertEqual(self.obj._getCrc(0x4e85, 16), 0x6b)
 
 if __name__ == '__main__':
     unittest.main()
