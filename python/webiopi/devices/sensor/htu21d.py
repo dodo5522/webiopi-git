@@ -29,7 +29,7 @@ class HTU21D(I2C, Temperature, Humidity):
         return 'HTU21D'
 
     def __family__(self):
-        return [Temperature.__family(self), Humidity.__family__(self)]
+        return [Temperature.__family__(self), Humidity.__family__(self)]
 
     def resetSoftware(self):
         # The soft reset takes less than 15ms as written on datasheet page 12.
