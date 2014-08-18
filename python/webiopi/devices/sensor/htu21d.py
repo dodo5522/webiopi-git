@@ -70,7 +70,7 @@ class HTU21D(I2C, Temperature, Humidity):
             raise ValueError('CRC unmatch : 0x%02x, 0x%02x.' % (crc_reg, crc))
 
         rh = -6.0 + 125.0 * s_rh / (1 << 16)
-        return rh
+        return rh / 100.0
 
     def _getCrc(self, value, bitlen):
         '''
