@@ -52,7 +52,6 @@ class HTU21D(I2C, Temperature, Humidity):
             raise ValueError('CRC unmatch : 0x%02x, 0x%02x.' % (crc_reg, crc))
 
         temp = -46.85 + 175.72 * s_temp / (1 << 16)
-        print("temp : %f" % temp)
         return temp
 
     def __getFahrenheit__(self):
@@ -71,7 +70,6 @@ class HTU21D(I2C, Temperature, Humidity):
             raise ValueError('CRC unmatch : 0x%02x, 0x%02x.' % (crc_reg, crc))
 
         rh = -6.0 + 125.0 * s_rh / (1 << 16)
-        print("humidity : %f" % rh)
         return rh
 
     def _getCrc(self, value, bitlen):
@@ -90,9 +88,3 @@ class HTU21D(I2C, Temperature, Humidity):
                 value ^= (polynomial >> i)
 
         return value
-
-if __name__ == '__main__':
-    obj = HTU21D()
-    obj.getHumidity()
-    obj.getCelsius()
-
