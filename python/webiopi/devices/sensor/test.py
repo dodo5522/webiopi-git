@@ -2,6 +2,7 @@
 
 import unittest
 from mpl115a2 import *
+from htu21d import *
 
 class MP1115A2_test(unittest.TestCase):
     @classmethod
@@ -66,6 +67,21 @@ class MP1115A2_test(unittest.TestCase):
         self.obj._coef_c12 = 0.000790
         result = self.obj._Adc2Pcomp((410, 507))
         self.assertEqual(result, 733.1905100000001)
+
+class HTU21D_test(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def setUp(self):
+        self.obj = HTU21D()
+
+    def test_dummy(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()
